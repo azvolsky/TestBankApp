@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="htmlhead">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title}">(title)</title>
+</head>
+<body>
+<table th:fragment="tx_table" id="table" class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>AccountDst</th>
+        <th>AccountSrc</th>
+        <th>Amount</th>
+        <th>start</th>
+        <th>end</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>ID</th>
+        <th>AccountDst</th>
+        <th>AccountSrc</th>
+        <th>Amount</th>
+        <th>start</th>
+        <th>end</th>
+    </tr>
+    </tfoot>
+    <tbody>
+    <tr th:each="transaction : ${tx}">
+        <td th:text="${transaction.id}">id</td>
+        <td th:text="${transaction.accountDst != null} ? ${transaction.accountDst.client.name} : 'null'">accountDst</td>
+        <td th:text="${transaction.accountSrc != null} ? ${transaction.accountSrc.client.name} : 'null'">accountSrc</td>
+        <td th:text="${transaction.transfer}">transfer</td>
+        <td th:text="${transaction.start}">start</td>
+        <td th:text="${transaction.end}">end</td>
+    </tr>
+    </tbody>
+</table>
+<script th:fragment="tx_script">
+    $(document).ready(
+        function() {
+            $('#table').DataTable();
+        }
+    );
+</script>

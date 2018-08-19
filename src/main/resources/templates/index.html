@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <!--<head th:include="users :: htmlhead" th:with="title='Index'">-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Bank</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+        <!-- Sticky footer -->
+        <link rel="stylesheet" th:href="@{/css/devpath.css}">
+
+        <!-- Users table -->
+        <link rel="stylesheet" th:href="@{/css/dataTables.bootstrap.min.css}">
+
+        <link rel="stylesheet" th:href="@{/css/react/react-bootstrap-table-all.min.css}">
+
+    </head>
+    <body>
+        <!-- Fixed navbar -->
+        <div th:insert="menu :: navbar"></div>
+
+        <!-- Begin page content -->
+        <!--<div class="container">-->
+            <!--<section th:insert="critters :: ${page}"/>-->
+        <!--</div>-->
+
+        <div class="container" style="margin-top:1%;" >
+            <section th:insert="${page} :: ${fragment_table}"/>
+        </div>
+
+        <div th:insert="footer :: copy"></div>
+
+        <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+
+        <script th:src="@{/js/react/react.js}"></script>
+        <script th:src="@{/js/react/react-dom.js}"></script>
+        <script th:src="@{/js/react/browser.min.js}"></script>
+        <script th:src="@{/js/react/react-bootstrap-table.min.js}"></script>
+
+        <script th:replace="${page} :: ${fragment_script}"/>
+    </body>
+</html>

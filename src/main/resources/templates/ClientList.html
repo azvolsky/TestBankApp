@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Client list</title>
+    <link rel="stylesheet" th:href="@{/css/react/react-bootstrap-table-all.min.css}">
+</head>
+<body>
+<div id="Sections" th:fragment="client_table">
+
+    <a href="addClient">Add Client</a>
+
+    <table id="table" class="table table-striped table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Age</th>
+        </tr>
+        <tr th:each ="client : ${clients}">
+            <td th:utext="${client.id}">...</td>
+            <td th:utext="${client.name}" th:onclick="|window.location.href='/accountList/${client.id}'|">...</td>
+            <td th:utext="${client.address}">...</td>
+            <td th:utext="${client.age}">...</td>
+        </tr>
+    </table>
+
+</div>
+
+<!--<script th:fragment="sections_script" type="text/babel" th:src="@{app.js}"></script>-->
+
+<script th:fragment="sections_script">
+    $(document).ready(
+        function() {
+            $('#table').DataTable();
+        }
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Person List</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    </head>
+<body>
+    <h1>Account List</h1>
+
+    <br/><br/>
+    <div>
+
+    </div>
+    </body>
+    </html>
+
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Client list</title>
+        <link rel="stylesheet" th:href="@{/css/react/react-bootstrap-table-all.min.css}">
+    </head>
+    <body>
+    <div id="Sections" th:fragment="account_table">
+
+        <a href="/addAccount">Add Account</a>
+        <br/>
+        <a href="/transfer">Transfer</a>
+        <br/>
+        <table id="table" class="table table-striped table-bordered" >
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>amount</th>
+            </tr>
+            <tr th:each ="account : ${accounts}">
+                <td th:utext="${account.id}">...</td>
+                <td th:utext="${account.client.name}" th:onclick="|window.location.href='/accountList/${account.client.id}'|">...</td>
+                <td th:utext="${account.amount}" th:onclick="|window.location.href='/txList/${account.id}'|">...</td>
+            </tr>
+        </table>
+
+        <div th:if="${total != 0 && total != null}">
+            <table border="1">
+                <tr>
+                    <td>Total:</td>
+                    <td th:text="${total}"></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <script th:fragment="sections_script">
+    $(document).ready(
+        function() {
+            $('#table').DataTable();
+        }
+    );
+    </script>
+
+    <!--<script th:fragment="sections_script" type="text/babel" th:src="@{app.js}"></script>-->
+
+    <!--<script th:src="@{/js/react/react.js}"></script>-->
+    <!--<script th:src="@{/js/react/react-dom.js}"></script>-->
+    <!--<script th:src="@{/js/react/browser.min.js}"></script>-->
+    <!--<script th:src="@{/js/react/react-bootstrap-table.min.js}"></script>-->
+</body>
+</html>

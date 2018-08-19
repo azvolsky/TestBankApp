@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Client list</title>
+    <link rel="stylesheet" th:href="@{/css/react/react-bootstrap-table-all.min.css}">
+</head>
+<body>
+<div id="Sections" th:fragment="client_form">
+
+    <form th:action="@{/addClient}"
+          th:object="${clientForm}" method="POST">
+        Name:
+        <input type="text" th:field="*{name}" />
+        <br/>
+        Address:
+        <input type="text" th:field="*{address}" />
+        <br/>
+        Age:
+        <input type="text" th:field="*{age}" />
+        <br/>
+        <input type="submit" value="Create" />
+    </form>
+
+    <br/>
+
+</div>
+
+<script th:fragment="sections_script" type="text/babel" th:src="@{app.js}"></script>
+
+<script th:src="@{/js/react/react.js}"></script>
+<script th:src="@{/js/react/react-dom.js}"></script>
+<script th:src="@{/js/react/browser.min.js}"></script>
+<script th:src="@{/js/react/react-bootstrap-table.min.js}"></script>
+</body>
+</html>
